@@ -21,6 +21,6 @@ module.exports = (buffer, opts) => {
         ]
     })
     return Promise.all([buffer, pngquant, optipng]).then(res => {
-        return res.reduce((min, el) => el.length < min ? el : min, res[0].length);
+        return res.sort((a, b) => a.length - b.length)[0]
     });
 }
