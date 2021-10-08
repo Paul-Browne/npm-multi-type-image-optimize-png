@@ -1,6 +1,6 @@
 {
   "name": "imagemin-most-optimized-png",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Returns the best optimised image from pngquant, optipng or the original if optimization didn't improve it",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/Paul-Browne/npm-multi-type-image-optimize-png#readme",
   "dependencies": {
-    "imagemin": "^7.0.1",
+    "imagemin": "^8.0.1",
     "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.1"
+    "imagemin-pngquant": "^9.0.2"
   }
 }
