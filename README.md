@@ -11,42 +11,41 @@ or
 
 
 ```js
-const fs = require("fs");
-const optimPNG = require("imagemin-most-optimized-png");
+import { promises as fs } from 'fs';
+import optimizePNG from "imagemin-most-optimized-png";
 
-fs.readFile("/path/to/source/image.png", (err, data) => {
-	if (err) throw err;
-	optimPNG(data).then(image => {
-		// assumes "/path/to/dist/" directory exists
-		fs.writeFile("/path/to/dist/image.png", image, err => {
-			if (err) throw err;
-			console.log('The file has been saved!');
-		});
-	})
-});
+const optimze = async path => {
+	const data = await fs.readFile(path);
+	const optimized = await optimizePNG(data);
+	await fs.writeFile("/path/to/dist/image.png", optimized);
+} 
+
+optimze("/path/to/source/image.png");
 ```
 
 Pass plugin quality levels as options for pngquant and optipng.
 
 ```js
-const fs = require("fs");
-const optimPNG = require("imagemin-most-optimized-png");
+import { promises as fs } from 'fs';
+import optimizePNG from "imagemin-most-optimized-png";
 
-const options = {			// defauls shown
-	pngquant: [0.5, 0.8]	// Array<0...1, 0...1> Instructs pngquant to use the least amount of colors required to meet or exceed the max quality.
-	optipng: 3				// 0-7, 0 - minimal optimization, 7 - 240 trials 
+const options = { 
+	// defaults shown
+	
+	// Array<0...1, 0...1> Instructs pngquant to use the least amount of colors required to meet or exceed the max quality.
+	pngquant: [0.5, 0.8], 
+	
+	// 0-7, 0 - minimal optimization, 7 - 240 trials 
+	optipng: 3 
 }
 
-fs.readFile("/path/to/source/image.png", (err, data) => {
-	if (err) throw err;
-	optimPNG(data, options).then(image => {
-		// assumes "/path/to/dist/" directory exists
-		fs.writeFile("/path/to/dist/image.png", image, err => {
-			if (err) throw err;
-			console.log('The file has been saved!');
-		});
-	})
-});
+const optimze = async path => {
+	const data = await fs.readFile(path);
+	const optimized = await optimizePNG(data, options);
+	await fs.writeFile("/path/to/dist/image.png", optimized);
+} 
+
+optimze("/path/to/source/image.png");
 ```
 
 
