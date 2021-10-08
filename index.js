@@ -1,7 +1,7 @@
-const imagemin = require('imagemin');
-const imageminPngquant = require('imagemin-pngquant');
-const imageminOptipng = require('imagemin-optipng');
-module.exports = (buffer, opts) => {
+import imagemin from 'imagemin';
+import imageminPngquant from 'imagemin-pngquant';
+import imageminOptipng from 'imagemin-optipng';
+export default async (buffer, opts) => {
     opts = opts || {};
     opts.pngquant = opts.pngquant || [0.5, 0.8];
     opts.optipng = opts.optipng || 3;
@@ -20,7 +20,6 @@ module.exports = (buffer, opts) => {
             })
         ]
     })
-    return Promise.all([buffer, pngquant, optipng]).then(res => {
-        return res.sort((a, b) => a.length - b.length)[0]
-    });
+    const res = await Promise.all([buffer, pngquant, optipng]);
+    return res.sort((a, b) => a.length - b.length)[0];
 }
