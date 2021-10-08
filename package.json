@@ -1,6 +1,6 @@
 {
   "name": "imagemin-most-optimized-png",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Returns the best optimised image from pngquant, optipng or the original if optimization didn't improve it",
   "main": "index.js",
   "scripts": {

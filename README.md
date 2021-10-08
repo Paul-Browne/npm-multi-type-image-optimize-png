@@ -10,13 +10,13 @@ or
 `npm i -D imagemin-most-optimized-png`
 
 ```js
-import { promises as fs } from 'fs';
+import { readFile, writeFile } from 'fs/promises';
 import optimizePNG from "imagemin-most-optimized-png";
 
 const optimze = async path => {
-	const data = await fs.readFile(path);
+	const data = await readFile(path);
 	const optimized = await optimizePNG(data);
-	await fs.writeFile("/path/to/dist/image.png", optimized);
+	await writeFile("/path/to/dist/image.png", optimized);
 } 
 
 optimze("/path/to/source/image.png");
@@ -25,7 +25,7 @@ optimze("/path/to/source/image.png");
 Pass plugin quality levels as options for pngquant and optipng.
 
 ```js
-import { promises as fs } from 'fs';
+import { readFile, writeFile } from 'fs/promises';
 import optimizePNG from "imagemin-most-optimized-png";
 
 const options = { 
@@ -39,9 +39,9 @@ const options = {
 }
 
 const optimze = async path => {
-	const data = await fs.readFile(path);
+	const data = await readFile(path);
 	const optimized = await optimizePNG(data, options);
-	await fs.writeFile("/path/to/dist/image.png", optimized);
+	await writeFile("/path/to/dist/image.png", optimized);
 } 
 
 optimze("/path/to/source/image.png");
