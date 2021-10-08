@@ -9,7 +9,6 @@ or
 
 `npm i -D imagemin-most-optimized-png`
 
-
 ```js
 import { promises as fs } from 'fs';
 import optimizePNG from "imagemin-most-optimized-png";
@@ -47,8 +46,3 @@ const optimze = async path => {
 
 optimze("/path/to/source/image.png");
 ```
-
-
-
-
-

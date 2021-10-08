@@ -7,13 +7,11 @@ const optimze = async path => {
 	await fs.writeFile(path.replace("src", "dist"), optimized);
 } 
 
-console.log("start");
-await optimze("./tests/src/images/paint.png");
-await optimze("./tests/src/images/gradient.png");
-await optimze("./tests/src/images/screenshot.png");
-await optimze("./tests/src/images/field.png");
-await optimze("./tests/src/images/field-large.png");
-await optimze("./tests/src/images/laptop.png");
-await optimze("./tests/src/images/beach.png");
-await optimze("./tests/src/images/cartoon.png");
-console.log("finish");
+optimze("./tests/src/images/paint.png");
+optimze("./tests/src/images/gradient.png");
+optimze("./tests/src/images/screenshot.png");
+optimze("./tests/src/images/field.png");
+optimze("./tests/src/images/field-large.png");
+optimze("./tests/src/images/laptop.png");
+optimze("./tests/src/images/beach.png");
+optimze("./tests/src/images/cartoon.png");
