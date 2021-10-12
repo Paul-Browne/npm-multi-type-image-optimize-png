@@ -1,17 +1,26 @@
 import { readFile, writeFile } from 'fs/promises';
 import optimizePNG from "./index.js";
 
-const optimze = async path => {
+const optimzeLowQualityOptions = async path => {
+	const data = await readFile(path);
+	const optimized = await optimizePNG(data, {
+		pngquant: [0,0],
+		optipng: 0
+	});
+	await writeFile(path.replace("src", "dist"), optimized);
+} 
+
+const optimzeNoOptions = async path => {
 	const data = await readFile(path);
 	const optimized = await optimizePNG(data);
 	await writeFile(path.replace("src", "dist"), optimized);
 } 
 
-optimze("./tests/src/images/paint.png");
-optimze("./tests/src/images/gradient.png");
-optimze("./tests/src/images/screenshot.png");
-optimze("./tests/src/images/field.png");
-optimze("./tests/src/images/field-large.png");
-optimze("./tests/src/images/laptop.png");
-optimze("./tests/src/images/beach.png");
-optimze("./tests/src/images/cartoon.png");
+optimzeLowQualityOptions("./tests/src/images/paint.png");
+optimzeNoOptions("./tests/src/images/gradient.png");
+optimzeLowQualityOptions("./tests/src/images/screenshot.png");
+optimzeNoOptions("./tests/src/images/field.png");
+optimzeLowQualityOptions("./tests/src/images/field-large.png");
+optimzeNoOptions("./tests/src/images/laptop.png");
+optimzeLowQualityOptions("./tests/src/images/beach.png");
+optimzeNoOptions("./tests/src/images/cartoon.png");

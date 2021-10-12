@@ -1,10 +1,10 @@
 import imagemin from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 import imageminOptipng from 'imagemin-optipng';
-export default async (buffer, opts) => {
-    opts = opts || {};
-    opts.pngquant = opts.pngquant || [0.5, 0.8];
-    opts.optipng = opts.optipng || 3;
+export default async (buffer, opts = {
+        pngquant: [0.5, 0.8],
+        optipng: 3
+    }) => {
     const pngquant = imagemin.buffer(buffer, {
         plugins: [
             imageminPngquant({
